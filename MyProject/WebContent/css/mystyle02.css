@@ -1,0 +1,45 @@
+.inner{
+	text-align:center;
+}
+
+.a01{
+	position:absolute;
+	top:13cm;
+	left:15cm;
+	background-color:#00AA55;
+	border-radius: 5px;
+	text-align:center;
+	width:3cm;
+	height:1cm;
+	line-height:1cm;
+	color:	#000000;
+}
+
+.a01:hover{
+	
+	background-color:#008844;
+	color:	#DDDDDD;
+}
+
+.num01{
+	padding-left:15cm;
+	color:	#FF0000;
+}
+.num02{
+	padding-left:11cm;
+	color:#0088A8;
+}
+.num03{
+	padding-top:1.5cm;
+	padding-left:13.5cm;
+}
+h2{
+	position:absolute;
+	top:5cm;
+	left:14.5cm;
+	color:#0066FF;
+}
+.num04{
+	padding-left:15cm;
+	color:pink;
+}
