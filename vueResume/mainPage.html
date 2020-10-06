@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="images/doglogo.jpg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/all.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/regular.js" integrity="sha384-t7yHmUlwFrLxHXNLstawVRBMeSLcXTbQ5hsd0ifzwGtN7ZF7RZ8ppM7Ldinuoiif" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+    <script src="/javascripts/vendor.js"></script>
+    <title>Vue-個人履歷</title>
+
+
+</head>
+
+<body style="font-family: 微軟正黑體;">
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary2">
+            <h2>Vue-個人履歷</h2>
+
+            <div class="contactEmail">
+                <input type="checkbox" v-model="isShowContact"> 是否顯示聯絡資訊
+
+            </div>
+            <div v-if="isShowContact" class="information">
+                Email: {{contactEmail}} <br> Phone: 0921147488
+            </div>
+        </nav>
+
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="#" :class="{'active':link == 'a'}" @click.prevent="link ='a'">基本資料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" :class="{'active':link == 'b'}" @click.prevent="link ='b'">學歷及經歷</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" :class="{'active':link == 'c'}" @click.prevent="link ='c'">技能與專長</a>
+            </li>
+        </ul>
+        <div class="content">
+            <div v-if="link == 'a'" style="display: flex;justify-content: flex-start;">
+                <div :class="photoObject" class="img">
+                    <img src="images/doggy.jpg" class="photo" @click="photoObject.rotate=!photoObject.rotate">
+                    <div class="personalIntroduction">
+                        <personal-resume v-if="resumeContent.name" :resume-content="resumeContent"></personal-resume>
+                    </div>
+
+                </div>
+                <div class="linkContent">
+                    <div class="linkTable">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr class="trTitle">
+                                    <td colspan="2">
+                                        <div class="text">
+                                            個人連結
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <a target="_blank" href="https://github.com/ivyching">GitHub</a>
+                                    </td>
+                                    <td>
+                                        <a target="_blank" href="https://ivyching.github.io/resume/index.html">初版履歷</a>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <a target="_blank" href="https://ithelp.ithome.com.tw/users/20129173"> IT邦幫忙</a>
+                                    </td>
+                                    <td>
+                                        <a target="_blank" href=""> IT邦幫忙</a>
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+
+                        </table>
+                    </div>
+
+                </div>
+
+
+
+                <!-- <div class="personalIntroduction">
+                    <personal-resume v-if="resumeContent.name" :resume-content="resumeContent"></personal-resume>
+                </div> -->
+
+
+
+
+            </div>
+            <div v-else-if="link == 'b'">Ｂ</div>
+            <div v-else-if="link == 'c'">Ｃ</div>
+        </div>
+    </div>
+
+</body>
+<style>
+    .contactEmail {
+        margin-left: 20px;
+        color: gray;
+        font-size: 12px;
+    }
+    
+    .information {
+        color: gray;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    .photo {
+        width: 300px;
+        height: 300px;
+        box-shadow: 5px 5px 7px 0px #E4EAEA;
+    }
+    
+    .rotate {
+        margin-top: 50px;
+        transform: rotate(3deg);
+    }
+    
+    .personalIntroduction {
+        background-color: blanchedalmond;
+        color: brown;
+        border-radius: 5px;
+        width: 300px;
+        font-weight: bolder;
+        position: relative;
+        height: 600px;
+    }
+    
+    .content {
+        overflow: hidden;
+        overflow-y: hidden;
+    }
+    
+    .img {
+        margin-bottom: 5px;
+        position: relative;
+        height: 100%;
+    }
+    
+    .linkContent {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: contents;
+    }
+    
+    .linkTable {
+        background-color: cornsilk;
+        width: 100%;
+        height: 900px;
+    }
+    
+    .trTitle {
+        text-align: center;
+        height: 150px;
+        line-height: 150px;
+        font-weight: bolder;
+        font-size: 50px;
+        background: radial-gradient(circle, white, #EFBE3B);
+    }
+    
+    .text {
+        background: -webkit-linear-gradient(120deg, #81411a 0, red 32%, #9b692a 63%, #c09034 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    td a {
+        font-weight: bolder;
+    }
+</style>
+<script type="text/x-template" id="personalResume">
+    <ul style="padding-top:10px">
+        <li>姓名 : {{resumeContent.name}}</li>
+        <br>
+        <li>年齡 : {{resumeContent.age}} </li>
+        <br>
+        <li>興趣 : {{resumeContent.interesting}}</li>
+        <br>
+        <li>職場經驗 : {{resumeContent.job}} </li>
+        <br>
+        <li>個人特質 : {{resumeContent.personality}}</li>
+        <br>
+        <li>畢業於 : {{resumeContent.graduated}} </li>
+    </ul>
+</script>
+
+<script>
+    Vue.component('personalResume', {
+        template: '#personalResume',
+        props: ['resumeContent']
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: '1111',
+            link: 'a',
+            contactEmail: 'baozi19960610@gmail.com',
+            isShowContact: false,
+            photoObject: {
+
+                'rotate': false
+            },
+            resumeContent: {
+                'name': "黃禹晴",
+                'age': 24,
+                'interesting': "唱歌,看外國影集,寫程式",
+                'job': "於網頁公司工作1.5年",
+                'personality': "外向,積極,有責任心",
+                'graduated': "銘傳大學國際企業學系"
+            }
+
+        },
+        watch: {
+            isShowContact: function() {
+                var self = this;
+                setTimeout(() => {
+                    self.isShowContact = false
+
+                }, 300000)
+            }
+        }
+    })
+</script>
+
+</html>
