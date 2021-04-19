@@ -18,41 +18,43 @@
 
 <body style="font-family: 微軟正黑體;">
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary2">
-            <h2>Vue-個人履歷</h2>
+        <div class="row">
 
-            <div class="contactEmail">
-                <input type="checkbox" v-model="isShowContact"> 是否顯示聯絡資訊
+            <div class="content">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-primary2">
+                    <h2>Vue-個人履歷</h2>
 
-            </div>
-            <div v-if="isShowContact" class="information">
-                Email: {{contactEmail}} <br> Phone: 0921147488
-            </div>
-        </nav>
+                    <div class="contactEmail">
+                        <input type="checkbox" v-model="isShowContact"> 是否顯示聯絡資訊
 
-
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="#" :class="{'active':link == 'a'}" @click.prevent="link ='a'">基本資料</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" :class="{'active':link == 'b'}" @click.prevent="link ='b'">學歷及經歷</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" :class="{'active':link == 'c'}" @click.prevent="link ='c'">技能與專長</a>
-            </li>
-        </ul>
-        <div class="content">
-            <div v-if="link == 'a'" style="display: flex;justify-content: flex-start;">
-                <div :class="photoObject" class="img col-sm-3">
-                    <img src="images/doggy.jpg" class="photo" @click="photoObject.rotate=!photoObject.rotate">
-                    <div class="personalIntroduction">
-                        <personal-resume v-if="resumeContent.name" :resume-content="resumeContent"></personal-resume>
                     </div>
+                    <div v-if="isShowContact" class="information">
+                        Email: {{contactEmail}} <br> Phone: 0921147488
+                    </div>
+                </nav>
 
-                </div>
-                <div class="col-sm-9">
-                    <div class="col-sm-12">
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" :class="{'active':link == 'a'}" @click.prevent="link ='a'">基本資料</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" :class="{'active':link == 'b'}" @click.prevent="link ='b'">學歷及經歷</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" :class="{'active':link == 'c'}" @click.prevent="link ='c'">技能與專長</a>
+                    </li>
+                </ul>
+                <div v-if="link == 'a'" class="displayContent col-sm-12 nopadding">
+                    <div :class="photoObject" class="img col-sm-2 nopadding">
+                        <img src="images/doggy.jpg" class="photo" @click="photoObject.rotate=!photoObject.rotate">
+                        <div class="personalIntroduction">
+                            <personal-resume v-if="resumeContent.name" :resume-content="resumeContent"></personal-resume>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-10 nopadding">
+
                         <table class="table table-bordered">
                             <tbody>
                                 <tr class="trTitle">
@@ -64,7 +66,7 @@
                                     </td>
 
                                 </tr>
-                                <tr>
+                                <tr class="trTitle2">
 
                                     <td>
                                         <a target="_blank" href="https://github.com/ivyching">GitHub</a>
@@ -74,7 +76,7 @@
                                     </td>
 
                                 </tr>
-                                <tr>
+                                <tr class="trTitle2">
 
                                     <td>
                                         <a target="_blank" href="https://ithelp.ithome.com.tw/users/20129173"> IT邦幫忙</a>
@@ -91,22 +93,23 @@
 
 
                         </table>
+
+
                     </div>
 
-                </div>
 
 
-
-                <!-- <div class="personalIntroduction">
+                    <!-- <div class="personalIntroduction">
                     <personal-resume v-if="resumeContent.name" :resume-content="resumeContent"></personal-resume>
                 </div> -->
 
 
 
 
+                </div>
+                <div v-else-if="link == 'b'">Ｂ</div>
+                <div v-else-if="link == 'c'">Ｃ</div>
             </div>
-            <div v-else-if="link == 'b'">Ｂ</div>
-            <div v-else-if="link == 'c'">Ｃ</div>
         </div>
     </div>
 
@@ -118,6 +121,11 @@
         font-size: 12px;
     }
     
+    .nopadding {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
     .information {
         color: gray;
         font-size: 12px;
@@ -125,9 +133,10 @@
     }
     
     .photo {
-        width: 300px;
-        height: 300px;
         box-shadow: 5px 5px 7px 0px #E4EAEA;
+        width: 100%;
+        height: 210px;
+        line-height: 154px;
     }
     
     .rotate {
@@ -139,10 +148,9 @@
         background-color: blanchedalmond;
         color: brown;
         border-radius: 5px;
-        width: 300px;
         font-weight: bolder;
         position: relative;
-        height: 600px;
+        height: 600px
     }
     
     .content {
@@ -172,9 +180,9 @@
     .trTitle {
         text-align: center;
         height: 150px;
-        line-height: 150px;
+        line-height: 194px;
         font-weight: bolder;
-        font-size: 50px;
+        font-size: 30px;
         background: radial-gradient(circle, white, #EFBE3B);
     }
     
@@ -186,6 +194,20 @@
     
     td a {
         font-weight: bolder;
+    }
+    
+    .displayContent {
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .trTitle2 {
+        background-color: antiquewhite;
+    }
+    
+    .trTitle2 a {
+        color: darkgray;
+        text-decoration: none
     }
 </style>
 <script type="text/x-template" id="personalResume">
