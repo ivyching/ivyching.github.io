@@ -44,15 +44,15 @@
         </ul>
         <div class="content">
             <div v-if="link == 'a'" style="display: flex;justify-content: flex-start;">
-                <div :class="photoObject" class="img">
+                <div :class="photoObject" class="img col-sm-3">
                     <img src="images/doggy.jpg" class="photo" @click="photoObject.rotate=!photoObject.rotate">
                     <div class="personalIntroduction">
                         <personal-resume v-if="resumeContent.name" :resume-content="resumeContent"></personal-resume>
                     </div>
 
                 </div>
-                <div class="linkContent">
-                    <div class="linkTable">
+                <div class="col-sm-9">
+                    <div class="col-sm-12">
                         <table class="table table-bordered">
                             <tbody>
                                 <tr class="trTitle">
