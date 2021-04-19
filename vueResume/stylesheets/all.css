@@ -3906,9 +3906,9 @@ tbody.collapse.show {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-    color: white;
-    background-color: #C4CEC6;
-    border-color: #dee2e6 #dee2e6 #fff;
+    color: white !important;
+    background-color: #C4CEC6 !important;
+    border-color: #dee2e6 #dee2e6 #fff !important;
 }
 
 .nav-tabs .dropdown-menu {
@@ -3923,8 +3923,8 @@ tbody.collapse.show {
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
-    color: #fff;
-    background-color: #4fc08d;
+    color: #fff !important;
+    background-color: #4fc08d !important;
 }
 
 .nav-fill .nav-item {
