@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/functions";
+@import "./helpers/_variables.scss";
+@import "~bootstrap/scss/bootstrap";
+@import "./helpers/dashboard.scss";
+.iconStyle {
+    vertical-align: baseline !important;
+    padding-right: 3px
+}
+
+.iconStyle2 {
+    vertical-align: bottom !important;
+    padding-right: 3px;
+    width: 20px;
+    height: 20px;
+}
+
+.cartList {
+    border-top: 1px solid gray;
+    position: relative;
+}
+
+.finalTotal {
+    color: green;
+    font-weight: bolder;
+}
+
+.control-label {
+    font-weight: bolder;
+    text-align: right;
+    padding-top: 10px;
+}
